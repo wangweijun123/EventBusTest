@@ -28,7 +28,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
 //                    @Override
 //                    public void run() {
                         Log.e(TAG, "post MessageEvent start..."+", tid:"+Thread.currentThread().getId());
-                        EventBus.getDefault().post(new MessageEvent("Hello everyone!"));
+//                        EventBus.getDefault().post(new MessageEvent("Hello everyone!"));
+                        EventBus.getDefault().postSticky(new MessageEvent("Hello everyone!"));
                         Log.e(TAG, "post MessageEvent finished");
 //                    }
 //                }).start();
@@ -75,6 +76,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     // 如果post 线程在UI线程，订阅者会在后台线程，如果post线程在非UI线程，订阅者之间调用
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
     public void backgroundThreadMode(MessageEvent event){
+        // save to sdcard, access network, access DB
         Log.e(TAG, "backgroundThreadMode event:"+event.message+", tid:"+Thread.currentThread().getId());
     }
 
