@@ -6,7 +6,7 @@ package com.example.wangweijun.eventbustest;
 
 public class MessageEvent {
 
-    public final String message;
+    public String message;
 
     public MessageEvent(String message) {
         this.message = message;

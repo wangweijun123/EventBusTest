@@ -84,6 +84,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     // Called in a separate thread(从线程池中取线程)
     @Subscribe(threadMode = ThreadMode.ASYNC)
     public void asyncThreadMode(MessageEvent event){
+        event.message = "hello 我被修改了";
         Log.e(TAG, "asyncThreadMode event:"+event.message+", tid:"+Thread.currentThread().getId());
     }
 }
